@@ -9,6 +9,10 @@ const router = express.Router()
 
 router.post('/signup', validation(joiSchema), controllerWrapper(ctrl.signup))
 
+router.get('/verify/:verifyToken', controllerWrapper(ctrl.verify))
+
+router.post('/verify', controllerWrapper(ctrl.reSend))
+
 router.post('/login', validation(joiSchema), controllerWrapper(ctrl.login))
 
 router.patch('/avatars', authenticate, upload.single('avatar'), controllerWrapper(ctrl.avatars))
